@@ -1,6 +1,19 @@
 const fs=require('fs');
 const chalk=require('chalk');
 
+const readNote = (title)=> {
+    
+    const notes=loadNotes();
+    const retNote=notes.find( (note) => note.title===title );
+
+    if(retNote){
+        console.log(chalk.green.inverse(retNote.title));
+        console.log(retNote.body);
+    }else {
+        console.log(chalk.red.inverse('No Such Note exist with that title'));
+    }
+
+}
 
 const getNotes = ()=>{ 
     
@@ -79,5 +92,6 @@ const loadNotes = ()=>{
 module.exports={
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    readNote: readNote
 }
