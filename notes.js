@@ -2,7 +2,20 @@ const fs=require('fs');
 const chalk=require('chalk');
 
 
-const getNotes = function(){ return `get Notes....`};
+const getNotes = ()=>{ 
+    
+    const notes=loadNotes();
+    console.log(chalk.blue.inverse('Following are the notes....'));
+
+    for(note of notes){
+         console.log(chalk.yellow('#####################'));
+         console.log(chalk.blue(note.title));
+         console.log(chalk.blue(note.body));   
+    }
+    console.log(chalk.yellow('#####################'));
+
+    
+};
 
 const addNote = (title,body)=>{
 
