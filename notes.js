@@ -4,7 +4,7 @@ const chalk=require('chalk');
 
 const getNotes = function(){ return `get Notes....`};
 
-const addNote = function(title,body){
+const addNote = (title,body)=>{
 
     const notes=loadNotes();
     const duplicateNotes = notes.filter((note)=>note.title===title);
@@ -25,7 +25,7 @@ const addNote = function(title,body){
     
 }
 
-const removeNote = function(title){
+const removeNote = (title)=>{
 
     const notes=loadNotes();
     const notesAfterDelete=notes.filter((note)=>note.title!==title);
@@ -42,12 +42,12 @@ const removeNote = function(title){
     }
 }
 
-const saveNotes = function(notes){
+const saveNotes = (notes)=>{
     const dataJson=JSON.stringify(notes);
     fs.writeFileSync('notes.json',dataJson);
 }
 
-const loadNotes = function(){
+const loadNotes = ()=>{
 
     try{
 
